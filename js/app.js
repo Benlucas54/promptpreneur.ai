@@ -99,3 +99,17 @@ if (cursorGradientEl) {
     cursorGradientEl.style.setProperty('--my', '-200px');
   });
 }
+
+// ====== PORTRAIT PIXEL REVEAL ======
+const aboutImg = document.querySelector('.about-img');
+if (aboutImg) {
+  aboutImg.addEventListener('mousemove', (e) => {
+    const rect = aboutImg.getBoundingClientRect();
+    aboutImg.style.setProperty('--mx', (e.clientX - rect.left) + 'px');
+    aboutImg.style.setProperty('--my', (e.clientY - rect.top) + 'px');
+  });
+  aboutImg.addEventListener('mouseleave', () => {
+    aboutImg.style.setProperty('--mx', '-200px');
+    aboutImg.style.setProperty('--my', '-200px');
+  });
+}
