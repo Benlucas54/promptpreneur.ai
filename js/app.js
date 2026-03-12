@@ -41,31 +41,6 @@ const observer = new IntersectionObserver((entries) => {
 revealEls.forEach(el => observer.observe(el));
 staggerParents.forEach(el => observer.observe(el));
 
-// ====== COUNT-UP ======
-const metricVals = document.querySelectorAll('[data-count]');
-let metricsCounted = false;
-const metricsObs = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting && !metricsCounted) {
-      metricsCounted = true;
-      metricVals.forEach(el => {
-        const target = parseInt(el.dataset.count);
-        const duration = 2000;
-        const start = performance.now();
-        function tick(now) {
-          const progress = Math.min((now - start) / duration, 1);
-          const eased = 1 - Math.pow(1 - progress, 3);
-          el.textContent = Math.round(target * eased);
-          if (progress < 1) requestAnimationFrame(tick);
-        }
-        requestAnimationFrame(tick);
-      });
-    }
-  });
-}, { threshold: 0.3 });
-const mg = document.getElementById('metricsGrid');
-if (mg) metricsObs.observe(mg);
-
 // ====== PARALLAX ORBS ======
 window.addEventListener('scroll', () => {
   const s = window.scrollY;
@@ -113,3 +88,13 @@ if (aboutImg) {
     aboutImg.style.setProperty('--my', '-200px');
   });
 }
+
+// ====== FAQ ACCORDION ======
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});

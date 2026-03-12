@@ -509,6 +509,45 @@ body {
 }
 .service-card:hover .service-arrow { color: var(--accent); transform: translateX(8px) rotate(-45deg); }
 
+/* ============ WHO THIS IS FOR ============ */
+.who-for { padding: 140px 0; }
+.who-for h2 {
+  font-family: var(--display);
+  font-size: clamp(1.9rem, 3.2vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 64px;
+  text-align: center;
+}
+.who-for-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.who-for-item {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 36px 32px;
+  transition: all 0.4s ease;
+}
+.who-for-item:hover {
+  border-color: var(--accent-mid);
+  box-shadow: 0 12px 40px rgba(26,23,20,0.04);
+}
+.who-for-item p {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--fg);
+  line-height: 1.6;
+}
+.who-for-cta {
+  text-align: center;
+  margin-top: 48px;
+}
+
 /* ============ PROCESS ============ */
 .process {
   padding: 140px 0;
@@ -589,31 +628,30 @@ body {
   text-transform: uppercase;
 }
 
-/* ============ METRICS ============ */
+/* ============ METRICS / CASE STUDY ============ */
 .metrics {
   padding: 100px 0;
   border-bottom: 1px solid var(--glass-border);
 }
-.metrics-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 40px;
+.case-study-block {
   text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
 }
-.metric-val {
+.case-study-heading {
   font-family: var(--display);
-  font-size: clamp(2.4rem, 3.8vw, 3.8rem);
+  font-size: clamp(1.6rem, 2.8vw, 2.2rem);
   font-weight: 700;
-  color: var(--accent);
-  line-height: 1;
-  margin-bottom: 8px;
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+  line-height: 1.2;
 }
-.metric-label {
-  font-family: var(--mono);
-  font-size: 0.62rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+.case-study-text {
+  font-size: 0.95rem;
+  font-weight: 400;
   color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 32px;
 }
 
 /* ============ TESTIMONIALS ============ */
@@ -771,6 +809,69 @@ body {
   margin-top: 6px;
 }
 
+/* ============ FAQ ============ */
+.faq { padding: 140px 0; }
+.faq h2 {
+  font-family: var(--display);
+  font-size: clamp(1.9rem, 3.2vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 64px;
+}
+.faq-list {
+  max-width: 740px;
+}
+.faq-item {
+  border-bottom: 1px solid var(--glass-border);
+}
+.faq-question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 0;
+  background: none;
+  border: none;
+  font-family: var(--display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--fg);
+  cursor: pointer;
+  text-align: left;
+  gap: 16px;
+}
+.faq-question:hover { color: var(--accent); }
+.faq-icon {
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--accent);
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+.faq-item.open .faq-icon {
+  transform: rotate(45deg);
+}
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.faq-item.open .faq-answer {
+  max-height: 200px;
+}
+.faq-answer p {
+  font-size: 0.92rem;
+  font-weight: 400;
+  color: var(--muted);
+  line-height: 1.7;
+  padding-bottom: 24px;
+}
+
+/* ============ CTA SECONDARY ============ */
+.cta-secondary {
+  margin-top: 32px;
+}
+
 /* ============ FINAL CTA ============ */
 .final-cta {
   padding: 160px 0;
@@ -855,6 +956,7 @@ footer {
 @media (max-width: 1024px) {
   .service-card { grid-template-columns: auto 1fr; gap: 24px; }
   .service-arrow { display: none; }
+  .who-for-grid { grid-template-columns: repeat(2, 1fr); }
   .process-grid { grid-template-columns: repeat(2, 1fr); }
   .process-step:first-child { border-radius: 20px 0 0 0; }
   .process-step:nth-child(2) { border-radius: 0 20px 0 0; }
@@ -875,11 +977,12 @@ footer {
   .services-top { flex-direction: column; }
   .service-card { grid-template-columns: 1fr; padding: 32px; }
   .service-number { margin-bottom: -8px; }
+  .who-for-grid { grid-template-columns: 1fr; }
   .process-grid { grid-template-columns: 1fr; }
+  .faq-question { font-size: 0.95rem; }
   .process-step { border-radius: 0 !important; }
   .process-step:first-child { border-radius: 20px 20px 0 0 !important; }
   .process-step:last-child { border-radius: 0 0 20px 20px !important; }
-  .metrics-grid { grid-template-columns: repeat(2, 1fr); gap: 40px 20px; }
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
   .about-img { max-width: 280px; }
   .about-creds { flex-wrap: wrap; gap: 24px; }
