@@ -113,8 +113,9 @@
     });
   }, 1600);
 
-  // Dismiss preloader
+  // Dismiss preloader — shorter on secondary pages
+  const dismissTime = (window.location.pathname === '/' || window.location.pathname.endsWith('index.html')) ? 5200 : 1800;
   setTimeout(() => {
     document.getElementById('preloader').classList.add('done');
-  }, 5200);
+  }, dismissTime);
 })();
