@@ -1142,9 +1142,29 @@ footer {
   line-height: 1.7;
 }
 
+/* WWM Booking Iframe */
+.wwm-booking-iframe {
+  border: none;
+  border-radius: 8px;
+  width: 120%;
+  height: 1300px;
+  margin-left: -10%;
+  mask-image: linear-gradient(to bottom, transparent, black 3%, black 97%, transparent),
+              linear-gradient(to right, transparent, black 3%, black 97%, transparent);
+  mask-composite: intersect;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 3%, black 97%, transparent),
+                      linear-gradient(to right, transparent, black 3%, black 97%, transparent);
+  -webkit-mask-composite: source-in;
+}
+
 /* WWM Responsive */
 @media (max-width: 1024px) {
   .process-grid-three { grid-template-columns: repeat(3, 1fr); }
+  .wwm-booking-iframe {
+    width: 100%;
+    margin-left: 0;
+    height: 1100px;
+  }
 }
 @media (max-width: 768px) {
   .wwm-hero { padding: 160px 0 80px; }
@@ -1157,4 +1177,9 @@ footer {
   .process-grid-three .process-step:first-child { border-radius: 20px 20px 0 0 !important; }
   .process-grid-three .process-step:last-child { border-radius: 0 0 20px 20px !important; }
   .wwm-form .btn-magnetic { width: 100%; justify-content: center; }
+  .wwm-booking-iframe {
+    width: 100%;
+    margin-left: 0;
+    height: 900px;
+  }
 }
