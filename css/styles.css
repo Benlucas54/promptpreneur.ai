@@ -1146,6 +1146,7 @@ footer {
 .wwm-booking-iframe {
   border: none;
   border-radius: 8px;
+  color-scheme: light;
   width: 120%;
   height: 1300px;
   margin-left: -10%;
